@@ -1,5 +1,6 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -42,10 +43,10 @@ const LoginForm = () => {
           LOCAL_STORAGE.ACCESS_TOKEN,
           result.payload.access_token
         );
-        toast({
-          description: "Login successful",
-        });
       }
+      toast({
+        description: "Login successful",
+      });
       router.push("/");
       router.refresh();
     } catch (error: any) {
@@ -92,6 +93,7 @@ const LoginForm = () => {
         />
 
         <Button type="submit" className="!mt-8 w-full">
+          {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
           Sign In
         </Button>
       </form>
