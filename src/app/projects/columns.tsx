@@ -17,5 +17,10 @@ export const columns: ColumnDef<TProject>[] = [
   {
     accessorKey: "last_accessed",
     header: "Last accessed",
+    cell: ({ row }) => {
+      const date = new Date(row.getValue("last_accessed"));
+      const formatted = date.toLocaleDateString();
+      return <div>{formatted}</div>;
+    },
   },
 ];
