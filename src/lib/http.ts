@@ -1,4 +1,4 @@
-import { envConfig } from "@/config"
+import { BASE_URL } from "@/constants/env"
 
 type CustomOptions = RequestInit & {
     baseUrl?: string | undefined
@@ -19,7 +19,7 @@ const request = async <Response>(method: 'GET' | 'POST' | 'PUT', url: string, op
     const baseHeaders = {
         'Content-Type': 'application/json',
     }
-    const baseUrl = options?.baseUrl === undefined ? envConfig.NEXT_PUBLIC_API_ENDPOINT : options.baseUrl
+    const baseUrl = options?.baseUrl === undefined ? BASE_URL : options.baseUrl
 
     const fullUrl = url.startsWith('/') ? `${baseUrl}${url}` : `${baseUrl}/${url}`
     const res = await fetch(fullUrl, {
