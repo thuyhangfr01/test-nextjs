@@ -8,7 +8,7 @@ type TTask = {
 }
 
 const tasksApiRequest = {
-    get: () => http.get<TTask[]>('/tasks')
+    get: () => http.get<TTask[]>('/api/v1/tasks')
 }
 
 export default tasksApiRequest;
