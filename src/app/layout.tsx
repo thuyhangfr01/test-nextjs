@@ -4,6 +4,7 @@ import "../style/globals.css";
 import QueryClientProvider from "@/providers/queryClient";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/toaster";
+import AuthenticatedComponent from "./authenticated";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +28,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <QueryClientProvider>{children}</QueryClientProvider>
+          <QueryClientProvider>
+            <AuthenticatedComponent>{children}</AuthenticatedComponent>
+          </QueryClientProvider>
         </ThemeProvider>
       </body>
     </html>
