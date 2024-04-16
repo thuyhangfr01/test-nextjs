@@ -4,6 +4,14 @@ type CustomOptions = RequestInit & {
     baseUrl?: string | undefined
 }
 
+type EntityErrorPayload = {
+    message: string
+    errors: {
+      field: string
+      message: string
+    }[]
+  }
+
 class HttpError extends Error {
     status: number
     payload: any
@@ -13,6 +21,22 @@ class HttpError extends Error {
         this.payload = payload
     }
 }
+
+export class EntityError extends HttpError {
+    status: 422
+    payload: EntityErrorPayload
+    constructor({
+      status,
+      payload
+    }: {
+      status: 422
+      payload: EntityErrorPayload
+    }) {
+      super({ status, payload })
+      this.status = status
+      this.payload = payload
+    }
+  }
 
 const request = async <Response>(method: 'GET' | 'POST' | 'PUT', url: string, options?: CustomOptions | undefined) => {
     const body = options?.body ? JSON.stringify(options.body) : undefined

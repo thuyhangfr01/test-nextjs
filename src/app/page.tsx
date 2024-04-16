@@ -1,14 +1,11 @@
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Header from "@/components/header";
+import Project from "./projects/page";
 
 export default async function Home() {
   return (
-    <main className="flex items-center justify-center min-h-screen">
-      <Button>Click dô đây</Button>
-      <Link href="/home">Home page</Link>
-      <div>
-        <h1>List tasks: </h1>
-      </div>
-    </main>
+    <>
+      <Header />
+      <Project />
+    </>
   );
 }
